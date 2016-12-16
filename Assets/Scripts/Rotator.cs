@@ -2,20 +2,20 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraController : MonoBehaviour
+public class Rotator : MonoBehaviour
 {
     #region GlobalVareables
     #region DefaultVareables
     public bool isDebug = false;
-    private string debugScriptName = "CameraController";
+    private string debugScriptName = "Rotator";
     #endregion
 
     #region Public
-    public GameObject player = null;
+    
     #endregion
 
     #region Private
-    private Vector3 offset = Vector3.zero;
+    
     #endregion
     #endregion
 
@@ -61,8 +61,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         if (isDebug) Debug.Log(debugScriptName + ": Loaded.");
-        
-        offset = transform.position - player.transform.position;
     }
     // Called every fixed frame
     void FixedUpdate()
@@ -70,9 +68,9 @@ public class CameraController : MonoBehaviour
 
     }
     // Called each frame
-    void LateUpdate()
+    void Update()
     {
-        transform.position = player.transform.position + offset;
+        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
     }
     #endregion
 }
